@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+
+    int t; cin>>t;
+
+    while(t--){
+        int n; cin>>n;
+
+        vector<int>a(n);
+        for(int i=0;i<n;i++) cin>>a[i];
+
+        vector<int>exist(n+1,0);
+        for(int x:a) exist[x]=1;
+
+        vector<int>b(n+1,1e9);
+        queue<int>q;
+
+        for(int i=1;i<=n;i++){
+            if(exist[i]){
+                b[i]=1;
+                q.push(i);
+            }
+        }
+
+        while(!q.empty()){
+            int x=q.front(); q.pop();
+
+            for(int v=x; v<=n; v+=x){
+                if(exist[v/x] && b[v] > b[x] + 1){
+                    b[v] = b[x] + 1;
+                    q.push(v);
+                }
+            }
+        }
+
+        for(int i=1;i<=n;i++){
+            if(b[i]==1e9) cout<<-1<<" ";
+            else cout<<b[i]<<" ";
+        }
+        cout<<"\n";
+    }
+}
