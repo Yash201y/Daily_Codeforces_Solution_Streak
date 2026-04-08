@@ -1,0 +1,20 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    unordered_set<char> s;
+    string str;
+
+    getline(cin, str);
+
+    for(char c : str){
+        if(c >= 'a' && c <= 'z'){
+            s.insert(c);
+        }
+    }
+
+    cout << s.size() << endl;
+
+    return 0;
+}
