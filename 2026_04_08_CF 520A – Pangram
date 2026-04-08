@@ -1,0 +1,20 @@
+#include <iostream>
+#include <bits/stdc++.h>
+using namespace std;
+int main(){
+    string s;
+    int n;
+    cin>>n;
+    cin>>s;
+    for(char &c: s){
+       c=tolower(c);
+    }
+    for(char ch='a'; ch<='z';ch++){
+        if(s.find(ch)==string::npos){
+            cout<<"NO"<<endl;
+            return 0;
+        }
+    }
+    cout<<"YES"<<endl;
+    return 0;
+}
